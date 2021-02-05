@@ -1,10 +1,23 @@
 {
-    "name": "geocortex-workflow-project",
-    "private": true,
-    "version": "1.0.0",
-    "description": "",
-    "license": "UNLICENSED",
-    "author": "",
+    "name": "@geocortex/workflow-activities-1integrate",
+    "version": "0.0.0-semantically-released",
+    "description": "1Integrate activities for Geocortex Workflow",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/geocortex/workflow-activities-1integrate.git"
+    },
+    "license": "MIT",
+    "author": "VertiGIS",
+    "homepage": "https://github.com/geocortex/workflow-activities-1integrate#readme",
+    "keywords": [
+        "VertiGIS",
+        "Geocortex",
+        "Workflow",
+        "1Integrate",
+        "1Spatial",
+        "ArcGIS",
+        "GIS"
+    ],
     "scripts": {
         "build": "vertigis-workflow-sdk build",
         "generate": "vertigis-workflow-sdk generate",
@@ -13,16 +26,14 @@
         "test": "jest",
         "test:watch": "npm run test --watch"
     },
-    "dependencies": {
-        
-        "mockdate": "^3.0.2"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@geocortex/workflow": "5.19.0",
         "@vertigis/workflow-sdk": "1.0.2",
         "conventional-changelog-conventionalcommits": "^4.5.0",
         "husky": "^4.3.6",
         "jest": "^26.6.3",
+        "mockdate": "^3.0.2",
         "prettier": "^2.2.1",
         "pretty-quick": "^3.1.0",
         "ts-jest": "^26.4.4",
@@ -33,5 +44,10 @@
         "last 2 edge versions",
         "last 2 firefox versions",
         "last 2 safari versions"
-    ]
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    }
 }
