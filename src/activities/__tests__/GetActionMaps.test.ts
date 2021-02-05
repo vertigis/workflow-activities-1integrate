@@ -22,7 +22,6 @@ describe("GetActionMaps", () => {
             };
 
             const result = { foo: "bar" };
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             mockGet.mockImplementationOnce(
                 (service: ApiService, path: string) => {
                     expect(service).toBe(inputs.service);

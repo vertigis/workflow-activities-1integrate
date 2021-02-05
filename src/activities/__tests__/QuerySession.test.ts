@@ -35,7 +35,6 @@ describe("QuerySession", () => {
 
             const result = { foo: "bar" };
 
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             mockGet.mockImplementationOnce(
                 (
                     service: ApiService,

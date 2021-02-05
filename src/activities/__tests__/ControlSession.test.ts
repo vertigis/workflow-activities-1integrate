@@ -47,7 +47,6 @@ describe("ControlSession", () => {
 
             const result = { foo: "bar" };
 
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             mockPost.mockImplementationOnce(
                 (
                     service: ApiService,

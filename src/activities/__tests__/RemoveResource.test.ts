@@ -47,7 +47,6 @@ describe("RemoveResource", () => {
 
             const result = { foo: "bar" };
 
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             mockRemove.mockImplementationOnce(
                 (service: ApiService, path: string) => {
                     expect(service).toBe(inputs.service);
