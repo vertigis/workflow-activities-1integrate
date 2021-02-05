@@ -53,12 +53,7 @@ describe("ManageResource", () => {
 
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             mockPut.mockImplementationOnce(
-                (
-                    service: ApiService,
-                    path: string,
-                    params?: Record<string, any>,
-                    data?: Record<string, any>
-                ) => {
+                (service: ApiService, path: string) => {
                     expect(service).toBe(inputs.service);
                     expect(path).toBe(`${inputs.folder}/${inputs.path}`);
 

@@ -52,8 +52,7 @@ describe("ControlSession", () => {
                 (
                     service: ApiService,
                     path: string,
-                    params?: Record<string, any>,
-                    data?: Record<string, any>
+                    params?: Record<string, any>
                 ) => {
                     expect(service).toBe(inputs.service);
                     expect(path).toBe(`sessions/${inputs.path}`);

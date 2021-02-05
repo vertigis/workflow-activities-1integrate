@@ -110,7 +110,7 @@ describe("request", () => {
         });
         it("adds parameters to the url as request params", async () => {
             const params = { foo: "bar", "b az": "abc 123" };
-            mockResponseOnce({}, (input, init) => {
+            mockResponseOnce({}, (input) => {
                 expect(input).toBe(
                     `http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`
                 );
@@ -161,7 +161,7 @@ describe("request", () => {
         });
         it("adds parameters to the url as request params", async () => {
             const params = { foo: "bar", "b az": "abc 123" };
-            mockResponseOnce({}, (input, init) => {
+            mockResponseOnce({}, (input) => {
                 expect(input).toBe(
                     `http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`
                 );

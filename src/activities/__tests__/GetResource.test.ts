@@ -47,11 +47,7 @@ describe("GetResource", () => {
             const result = { foo: "bar" };
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             mockGet.mockImplementationOnce(
-                (
-                    service: ApiService,
-                    path: string,
-                    data?: Record<string, any>
-                ) => {
+                (service: ApiService, path: string) => {
                     expect(service).toBe(inputs.service);
                     expect(path).toBe(`${inputs.folder}/${inputs.path}`);
                     return Promise.resolve(result);
