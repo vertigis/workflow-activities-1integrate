@@ -7,8 +7,7 @@ export interface GetSessionsInputs {
      * @description The 1Integrate API Service.
      * @required
      */
-    service: ApiService;    
-
+    service: ApiService;
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -29,7 +28,6 @@ export class GetSessions implements IActivityHandler {
         if (!inputs.service) {
             throw new Error("service is required");
         }
-        
 
         const response = await get(inputs.service, "sessions");
 
@@ -38,4 +36,3 @@ export class GetSessions implements IActivityHandler {
         };
     }
 }
-

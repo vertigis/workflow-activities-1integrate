@@ -13,27 +13,20 @@ export interface ManageResourceInputs {
      * @description The folder of resource.
      * @required
      */
-    folder:   "actions" |
-            "actionmaps" |
-            "datastores" |
-            "rules" |
-            "sessions";
+    folder: "actions" | "actionmaps" | "datastores" | "rules" | "sessions";
 
     /**
-    * @description The folder structure for the resource.
-    * @required
-    */
+     * @description The folder structure for the resource.
+     * @required
+     */
     path: string;
-
 
     /**
      * @description The properties of the resource to update.
      */
     resourceProperties?: any;
 
-
     isFolder: true | false;
-
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -50,7 +43,9 @@ export interface ManageResourceOutputs {
  */
 export class ManageResource implements IActivityHandler {
     /** Perform the execution logic of the activity. */
-    async execute(inputs: ManageResourceInputs): Promise<ManageResourceOutputs> {
+    async execute(
+        inputs: ManageResourceInputs
+    ): Promise<ManageResourceOutputs> {
         if (!inputs.service) {
             throw new Error("service is required");
         }
@@ -63,11 +58,15 @@ export class ManageResource implements IActivityHandler {
 
         const queryString = { folder: inputs.isFolder };
 
-        const response = await put(inputs.service, `${inputs.folder}/${inputs.path}`, queryString, inputs.resourceProperties);
+        const response = await put(
+            inputs.service,
+            `${inputs.folder}/${inputs.path}`,
+            queryString,
+            inputs.resourceProperties
+        );
 
         return {
             result: response,
         };
     }
 }
-

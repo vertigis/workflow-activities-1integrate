@@ -13,11 +13,7 @@ export interface RemoveResourceInputs {
      * @description The folder of resource.
      * @required
      */
-    folder: "actions" |
-            "actionmaps" |
-            "datastores" |
-            "rules" |
-            "sessions";
+    folder: "actions" | "actionmaps" | "datastores" | "rules" | "sessions";
 
     /**
     * @description The path to a resource is the folder structure from 1Integrate for the particular
@@ -25,7 +21,6 @@ resource folder.
     * @required
     */
     path: string;
-
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -42,7 +37,9 @@ export interface RemoveResourceOutputs {
  */
 export class RemoveResource implements IActivityHandler {
     /** Perform the execution logic of the activity. */
-    async execute(inputs: RemoveResourceInputs): Promise<RemoveResourceOutputs> {
+    async execute(
+        inputs: RemoveResourceInputs
+    ): Promise<RemoveResourceOutputs> {
         if (!inputs.service) {
             throw new Error("service is required");
         }
@@ -53,11 +50,13 @@ export class RemoveResource implements IActivityHandler {
             throw new Error("path is required");
         }
 
-        const response = await remove(inputs.service, `${inputs.folder}/${inputs.path}`);
+        const response = await remove(
+            inputs.service,
+            `${inputs.folder}/${inputs.path}`
+        );
 
         return {
             result: response,
         };
     }
 }
-

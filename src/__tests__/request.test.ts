@@ -1,5 +1,5 @@
 import { ApiService } from "../ApiService";
-import { get, post, put} from "../request";
+import { get, post, put } from "../request";
 
 // Restore global fetch
 const originalFetch = global.fetch;
@@ -8,7 +8,6 @@ afterEach(() => {
 });
 
 const mockFetch = jest.fn();
-
 
 function mockResponseOnce(
     response: Record<string, unknown>,
@@ -31,17 +30,19 @@ const mockService: ApiService = {
     token_type: "bearer",
     expires_in: "",
     url: "http://test",
-}
+};
 
 describe("request", () => {
     describe("get", () => {
         it("requires url", async () => {
             const service = {
                 ...mockService,
-                url: ""
+                url: "",
             };
 
-            await expect(() => get(service, "path")).rejects.toThrow("url is required");
+            await expect(() => get(service, "path")).rejects.toThrow(
+                "url is required"
+            );
         });
         it("combines url and path", async () => {
             mockResponseOnce({}, (input) => {
@@ -52,7 +53,9 @@ describe("request", () => {
         });
         it("adds encoded parameters to the query string", async () => {
             mockResponseOnce({}, (input) => {
-                expect(input).toBe(`http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`);
+                expect(input).toBe(
+                    `http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`
+                );
             });
 
             await get(mockService, "path", { foo: "bar", "b az": "abc 123" });
@@ -69,10 +72,12 @@ describe("request", () => {
         it("requires url", async () => {
             const service = {
                 ...mockService,
-                url: ""
+                url: "",
             };
 
-            await expect(() => post(service, "path")).rejects.toThrow("url is required");
+            await expect(() => post(service, "path")).rejects.toThrow(
+                "url is required"
+            );
         });
         it("combines url and path", async () => {
             mockResponseOnce({}, (input) => {
@@ -101,25 +106,29 @@ describe("request", () => {
                 expect(init.body).toBe(JSON.stringify(params));
             });
 
-            await post(mockService, "path", undefined ,params);
+            await post(mockService, "path", undefined, params);
         });
         it("adds parameters to the url as request params", async () => {
             const params = { foo: "bar", "b az": "abc 123" };
             mockResponseOnce({}, (input, init) => {
-                expect(input).toBe(`http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`);
+                expect(input).toBe(
+                    `http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`
+                );
             });
 
-            await post(mockService, "path",  params, undefined);
+            await post(mockService, "path", params, undefined);
         });
     });
     describe("put", () => {
         it("requires url", async () => {
             const service = {
                 ...mockService,
-                url: ""
+                url: "",
             };
 
-            await expect(() => put(service, "path")).rejects.toThrow("url is required");
+            await expect(() => put(service, "path")).rejects.toThrow(
+                "url is required"
+            );
         });
         it("combines url and path", async () => {
             mockResponseOnce({}, (input) => {
@@ -143,7 +152,7 @@ describe("request", () => {
             await post(mockService, "path");
         });
         it("adds parameters to the body as JSON", async () => {
-            const params ={ foo: "bar", baz: "abc 123" };
+            const params = { foo: "bar", baz: "abc 123" };
             mockResponseOnce({}, (input, init) => {
                 expect(init.body).toBe(JSON.stringify(params));
             });
@@ -153,20 +162,24 @@ describe("request", () => {
         it("adds parameters to the url as request params", async () => {
             const params = { foo: "bar", "b az": "abc 123" };
             mockResponseOnce({}, (input, init) => {
-                expect(input).toBe(`http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`);
+                expect(input).toBe(
+                    `http://test/1Integrate/rest/path?foo=bar&b%20az=abc%20123`
+                );
             });
 
-            await post(mockService, "path",  params, undefined);
+            await post(mockService, "path", params, undefined);
         });
-    });    
+    });
     describe("delete", () => {
         it("requires url", async () => {
             const service = {
                 ...mockService,
-                url: ""
+                url: "",
             };
 
-            await expect(() => put(service, "path")).rejects.toThrow("url is required");
+            await expect(() => put(service, "path")).rejects.toThrow(
+                "url is required"
+            );
         });
         it("combines url and path", async () => {
             mockResponseOnce({}, (input) => {
@@ -182,6 +195,5 @@ describe("request", () => {
 
             await post(mockService, "path");
         });
-        
-    }); 
+    });
 });

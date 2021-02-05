@@ -13,19 +13,13 @@ export interface GetResourceInputs {
      * @description The resource folder.
      * @required
      */
-    folder:  "actions" |
-            "actionmaps" |
-            "datastores" |
-            "rules" |
-            "sessions"
-    ;
+    folder: "actions" | "actionmaps" | "datastores" | "rules" | "sessions";
 
     /**
-    * @description The folder structure for the resource.
-    * @required
-    */
+     * @description The folder structure for the resource.
+     * @required
+     */
     path: string;
-
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -53,11 +47,13 @@ export class GetResource implements IActivityHandler {
             throw new Error("path is required");
         }
 
-        const response = await get(inputs.service, `${inputs.folder}/${inputs.path}`);
+        const response = await get(
+            inputs.service,
+            `${inputs.folder}/${inputs.path}`
+        );
 
         return {
             result: response,
         };
     }
 }
-

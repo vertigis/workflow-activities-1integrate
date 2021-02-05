@@ -10,4 +10,3 @@ export * from "./activities/GetSessions";
 export * from "./activities/ManageResource";
 export * from "./activities/QuerySession";
 export * from "./activities/RemoveResource";
-

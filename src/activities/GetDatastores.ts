@@ -7,8 +7,7 @@ export interface GetDatastoresInputs {
      * @description The 1Integrate API Service.
      * @required
      */
-    service: ApiService;    
-
+    service: ApiService;
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -29,7 +28,6 @@ export class GetDatastores implements IActivityHandler {
         if (!inputs.service) {
             throw new Error("service is required");
         }
-        
 
         const response = await get(inputs.service, "datastores");
 
@@ -38,4 +36,3 @@ export class GetDatastores implements IActivityHandler {
         };
     }
 }
-

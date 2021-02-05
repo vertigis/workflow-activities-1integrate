@@ -10,9 +10,9 @@ export interface QuerySessionInputs {
     service: ApiService;
 
     /**
-    * @description The path is the folder structure from 1Integrate for the session.
-    * @required
-    */
+     * @description The path is the folder structure from 1Integrate for the session.
+     * @required
+     */
     path: string;
 
     detail?: string;
@@ -22,8 +22,6 @@ export interface QuerySessionInputs {
     start?: number;
 
     count?: number;
-
- 
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -47,20 +45,21 @@ export class QuerySession implements IActivityHandler {
         if (!inputs.path) {
             throw new Error("path is required");
         }
-        
 
         let params = JSON.parse(JSON.stringify(inputs));
         delete params["service"];
         delete params["path"];
-        if(Object.keys(params).length === 0 ){
+        if (Object.keys(params).length === 0) {
             params = undefined;
         }
 
-
-        const response = await get(inputs.service, `results/${inputs.path}`, params);
+        const response = await get(
+            inputs.service,
+            `results/${inputs.path}`,
+            params
+        );
         return {
             result: response,
         };
     }
 }
-

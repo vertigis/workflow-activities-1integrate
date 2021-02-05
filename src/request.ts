@@ -20,11 +20,10 @@ export async function get<T = any>(
 
     switch (expect) {
         case "blob":
-            return await request.blob() as any;
+            return (await request.blob()) as any;
         default:
             return await request.json();
     }
-
 }
 
 export async function post<T = any>(
@@ -38,7 +37,7 @@ export async function post<T = any>(
     }
 
     const qs = objectToQueryString(params);
-    const data = inData !=undefined?inData:{};
+    const data = inData != undefined ? inData : {};
 
     const url = `${service.url}/1Integrate/rest/${path}${qs ? "?" + qs : ""}`;
     const authHeader = `Bearer ${service.access_token}`;
@@ -50,14 +49,11 @@ export async function post<T = any>(
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-    }).then(response => {
+    }).then((response) => {
         const status = response.status;
         const statusText = response.statusText;
         return { status: status, statusCode: statusText } as any;
     });
-
-
-
 }
 
 export async function put<T = any>(
@@ -71,7 +67,7 @@ export async function put<T = any>(
     }
 
     const qs = objectToQueryString(params);
-    const data = inData !=undefined?inData:{};
+    const data = inData != undefined ? inData : {};
 
     const url = `${service.url}/1Integrate/rest/${path}${qs ? "?" + qs : ""}`;
     const authHeader = `Bearer ${service.access_token}`;
@@ -82,21 +78,29 @@ export async function put<T = any>(
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-    }).then(async(response) => {
+    }).then(async (response) => {
         const status = response.status;
         const statusText = response.statusText;
         if (status == 409) {
-            return { status: status, statusCode: statusText, message: "There is a conflict with this resource. Run a 'Get Resource' activity to refresh the resource before attempting an update." } as any;
+            return {
+                status: status,
+                statusCode: statusText,
+                message:
+                    "There is a conflict with this resource. Run a 'Get Resource' activity to refresh the resource before attempting an update.",
+            } as any;
         }
         const result = await response.json();
-        return { status: status, statusCode: statusText, result: result  } as any;
+        return {
+            status: status,
+            statusCode: statusText,
+            result: result,
+        } as any;
     });
 }
 
 export async function remove<T = any>(
     service: ApiService,
     path: string
-
 ): Promise<T> {
     if (!service.url) {
         throw new Error("url is required");
@@ -112,15 +116,16 @@ export async function remove<T = any>(
         headers: {
             Authorization: authHeader,
             "Content-Type": "application/json",
-        }
-        
-    }).then(response => {
+        },
+    }).then((response) => {
         const status = response.status;
         const statusText = response.statusText;
         return { status: status, statusCode: statusText } as any;
     });
 }
-function objectToQueryString(data?: Record<string, string | number | boolean | null | undefined>): string {
+function objectToQueryString(
+    data?: Record<string, string | number | boolean | null | undefined>
+): string {
     if (!data) {
         return "";
     }
