@@ -21,8 +21,17 @@ describe("GetRules", () => {
                 service: {} as any,
             };
 
-            const result = { foo: "bar" };
-
+            const result = {
+                type: "folder",
+                name: "rules",
+                contents: [
+                    {
+                        type: "folder",
+                        name: "foo",
+                        contents: [{ name: "foo", type: "bar" }],
+                    },
+                ],
+            };
             mockGet.mockImplementationOnce(
                 (service: ApiService, path: string) => {
                     expect(service).toBe(inputs.service);

@@ -1,6 +1,7 @@
 import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
 import { ApiService } from "../ApiService";
-import { get } from "../request";
+import { traverseResources } from "./TraverseResources";
+
 /** An interface that defines the inputs of the activity. */
 export interface GetActionsInputs {
     /**
@@ -29,7 +30,7 @@ export class GetActions implements IActivityHandler {
             throw new Error("service is required");
         }
 
-        const response = await get(inputs.service, "actions");
+        const response = await traverseResources(inputs.service, "actions");
 
         return {
             result: response,
