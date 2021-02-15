@@ -21,7 +21,7 @@ export async function buildTree(
     node: Node
 ): Promise<any> {
     const folders = node.contents.filter(
-        (x) => x.type === "folder" && !x.isEmpty && x.name != "Recycle Bin"
+        (x) => x.type === "folder" && x.name != "Recycle Bin"
     );
 
     for (let i = 0; i < folders.length; i++) {
@@ -32,8 +32,11 @@ export async function buildTree(
             f.contents != undefined &&
             f.contents.length > 0
         ) {
+            folders[i]["isEmpty"] = false;
             folders[i]["contents"] = f.contents;
             void buildTree(service, fPath, folders[i]);
+        } else {
+            folders[i]["isEmpty"] = true;
         }
     }
     return node;
