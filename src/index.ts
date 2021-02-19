@@ -1,5 +1,5 @@
 // Activities will be re-exported from this file.
-export * from "./activities/AuthenticateApp";
+export * from "./activities/AuthenticateAppService";
 export * from "./activities/ControlSession";
 export * from "./activities/GetActionMaps";
 export * from "./activities/GetActions";

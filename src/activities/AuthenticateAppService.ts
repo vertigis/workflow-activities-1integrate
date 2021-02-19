@@ -2,7 +2,7 @@ import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHand
 import { ApiService } from "../ApiService";
 
 /** An interface that defines the inputs of the activity. */
-export interface AuthenticateAppInputs {
+export interface AuthenticateAppServiceInputs {
     /**
      * @displayName Base URL
      * @description The URL of the 1Integrate REST API.
@@ -31,7 +31,7 @@ export interface AuthenticateAppInputs {
 }
 
 /** An interface that defines the outputs of the activity. */
-export interface AuthenticateAppOutputs {
+export interface AuthenticateAppServiceOutputs {
     /**
      * @description The 1Integrate service that can be supplied to other 1Integrate activities.
      */
@@ -42,10 +42,10 @@ export interface AuthenticateAppOutputs {
  * @category 1Spatial - 1Integrate
  * @description Authenticates an application with the 1Integrate REST API.
  */
-export class AuthenticateApp implements IActivityHandler {
+export class AuthenticateAppService implements IActivityHandler {
     async execute(
-        inputs: AuthenticateAppInputs
-    ): Promise<AuthenticateAppOutputs> {
+        inputs: AuthenticateAppServiceInputs
+    ): Promise<AuthenticateAppServiceOutputs> {
         if (!inputs.baseUrl) {
             throw new Error("baseUrl is required");
         }
