@@ -10,7 +10,7 @@ export async function get<T = any>(
         throw new Error("url is required");
     }
     const qs = objectToQueryString(params);
-    const url = `${service.url}/1Integrate/rest/${path}${qs ? "?" + qs : ""}`;
+    const url = `${service.url}/rest/${path}${qs ? "?" + qs : ""}`;
     const authHeader = `Bearer ${service.access_token}`;
     const request = await fetch(url, {
         headers: {
@@ -39,7 +39,7 @@ export async function post<T = any>(
     const qs = objectToQueryString(params);
     const data = inData != undefined ? inData : {};
 
-    const url = `${service.url}/1Integrate/rest/${path}${qs ? "?" + qs : ""}`;
+    const url = `${service.url}/rest/${path}${qs ? "?" + qs : ""}`;
     const authHeader = `Bearer ${service.access_token}`;
 
     return fetch(url, {
@@ -69,7 +69,7 @@ export async function put<T = any>(
     const qs = objectToQueryString(params);
     const data = inData != undefined ? inData : {};
 
-    const url = `${service.url}/1Integrate/rest/${path}${qs ? "?" + qs : ""}`;
+    const url = `${service.url}/rest/${path}${qs ? "?" + qs : ""}`;
     const authHeader = `Bearer ${service.access_token}`;
     return fetch(url, {
         method: "PUT",
@@ -109,7 +109,7 @@ export async function remove<T = any>(
         throw new Error("path is required");
     }
 
-    const url = `${service.url}/1Integrate/rest/${path}`;
+    const url = `${service.url}/rest/${path}`;
     const authHeader = `Bearer ${service.access_token}`;
     return fetch(url, {
         method: "DELETE",

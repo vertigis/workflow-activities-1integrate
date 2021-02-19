@@ -29,7 +29,7 @@ const mockService: ApiService = {
     access_token: "secret",
     token_type: "bearer",
     expires_in: "",
-    url: "http://test",
+    url: "http://test/1Integrate",
 };
 
 describe("request", () => {
