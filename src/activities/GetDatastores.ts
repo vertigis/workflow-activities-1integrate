@@ -1,6 +1,7 @@
 import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
 import { ApiService } from "../ApiService";
 import { traverseResources } from "./TraverseResources";
+
 /** An interface that defines the inputs of the activity. */
 export interface GetDatastoresInputs {
     /**
@@ -21,9 +22,10 @@ export interface GetDatastoresOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Returns a list of datastore resources in the Datastores folder.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class GetDatastores implements IActivityHandler {
-    /** Perform the execution logic of the activity. */
     async execute(inputs: GetDatastoresInputs): Promise<GetDatastoresOutputs> {
         if (!inputs.service) {
             throw new Error("service is required");

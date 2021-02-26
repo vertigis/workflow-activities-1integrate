@@ -34,9 +34,10 @@ export interface ControlSessionOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Executes actions against a given session.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class ControlSession implements IActivityHandler {
-    /** Perform the execution logic of the activity. */
     async execute(
         inputs: ControlSessionInputs
     ): Promise<ControlSessionOutputs> {

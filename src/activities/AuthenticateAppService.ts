@@ -27,7 +27,7 @@ export interface AuthenticateAppServiceInputs {
      * @description Set to true if you require a 2-week token.
      * @required
      */
-    longLivedToken: true | false;
+    longLivedToken: boolean;
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -41,6 +41,8 @@ export interface AuthenticateAppServiceOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Authenticates an application with the 1Integrate REST API.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class AuthenticateAppService implements IActivityHandler {
     async execute(

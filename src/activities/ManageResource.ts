@@ -1,6 +1,7 @@
 import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
 import { ApiService } from "../ApiService";
 import { put } from "../request";
+
 /** An interface that defines the inputs of the activity. */
 export interface ManageResourceInputs {
     /**
@@ -26,7 +27,7 @@ export interface ManageResourceInputs {
      */
     resourceProperties?: any;
 
-    isFolder: true | false;
+    isFolder: boolean;
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -40,9 +41,10 @@ export interface ManageResourceOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Returns the activity log entries for a given locate.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class ManageResource implements IActivityHandler {
-    /** Perform the execution logic of the activity. */
     async execute(
         inputs: ManageResourceInputs
     ): Promise<ManageResourceOutputs> {

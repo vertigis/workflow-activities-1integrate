@@ -1,6 +1,7 @@
 import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
 import { ApiService } from "../ApiService";
 import { get } from "../request";
+
 /** An interface that defines the inputs of the activity. */
 export interface GetResourceInputs {
     /**
@@ -33,9 +34,10 @@ export interface GetResourceOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Returns a 1Integrate resource given its folder and the path under.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class GetResource implements IActivityHandler {
-    /** Perform the execution logic of the activity. */
     async execute(inputs: GetResourceInputs): Promise<GetResourceOutputs> {
         if (!inputs.service) {
             throw new Error("service is required");

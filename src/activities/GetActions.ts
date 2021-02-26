@@ -22,9 +22,10 @@ export interface GetActionsOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Returns a list of action resources in the Actions folder.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class GetActions implements IActivityHandler {
-    /** Perform the execution logic of the activity. */
     async execute(inputs: GetActionsInputs): Promise<GetActionsOutputs> {
         if (!inputs.service) {
             throw new Error("service is required");

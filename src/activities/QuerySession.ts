@@ -1,6 +1,7 @@
 import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
 import { ApiService } from "../ApiService";
 import { get } from "../request";
+
 /** An interface that defines the inputs of the activity. */
 export interface QuerySessionInputs {
     /**
@@ -35,9 +36,10 @@ export interface QuerySessionOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Returns the activity log entries for a given locate.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class QuerySession implements IActivityHandler {
-    /** Perform the execution logic of the activity. */
     async execute(inputs: QuerySessionInputs): Promise<QuerySessionOutputs> {
         if (!inputs.service) {
             throw new Error("service is required");

@@ -1,6 +1,7 @@
 import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
 import { ApiService } from "../ApiService";
 import { remove } from "../request";
+
 /** An interface that defines the inputs of the activity. */
 export interface RemoveResourceInputs {
     /**
@@ -34,9 +35,10 @@ export interface RemoveResourceOutputs {
 /**
  * @category 1Spatial - 1Integrate
  * @description Returns the activity log entries for a given locate.
+ * @clientOnly
+ * @unsupportedApps GMV
  */
 export class RemoveResource implements IActivityHandler {
-    /** Perform the execution logic of the activity. */
     async execute(
         inputs: RemoveResourceInputs
     ): Promise<RemoveResourceOutputs> {
