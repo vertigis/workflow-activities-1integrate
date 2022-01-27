@@ -1,7 +1,7 @@
 {
     "name": "@geocortex/workflow-activities-1integrate",
     "version": "0.0.0-semantically-released",
-    "description": "1Integrate activities for Geocortex Workflow",
+    "description": "1Integrate activities for VertiGIS Studio Workflow",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/geocortex/workflow-activities-1integrate.git"
@@ -11,7 +11,7 @@
     "homepage": "https://github.com/geocortex/workflow-activities-1integrate#readme",
     "keywords": [
         "VertiGIS",
-        "Geocortex",
+        "VertiGIS Studio",
         "Workflow",
         "1Integrate",
         "1Spatial",
