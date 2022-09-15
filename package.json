@@ -1,5 +1,5 @@
 {
-    "name": "@geocortex/workflow-activities-1integrate",
+    "name": "@vertigis/workflow-activities-1integrate",
     "version": "0.0.0-semantically-released",
     "description": "1Integrate activities for VertiGIS Studio Workflow",
     "repository": {
