@@ -1,7 +1,7 @@
 [![CI/CD](https://github.com/geocortex/workflow-activities-1integrate/workflows/CI/CD/badge.svg)](https://github.com/geocortex/workflow-activities-1integrate/actions)
 [![npm](https://img.shields.io/npm/v/@geocortex/workflow-activities-1integrate)](https://www.npmjs.com/package/@geocortex/workflow-activities-1integrate)
 
-This project contains activities for interacting with the [1integrate REST API](https://1spatial.com/documentation/1integrate/v2_8/Home.htm) in a [VertiGIS Studio Workflow](https://www.vertigisstudio.com/products/vertigis-studio-workflow/).
+This project contains activities for interacting with the [1Integrate REST API](https://1spatial.com/documentation/1integrate) in a [VertiGIS Studio Workflow](https://www.vertigisstudio.com/products/vertigis-studio-workflow/).
 
 ## Usage
 
