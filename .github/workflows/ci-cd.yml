@@ -48,6 +48,8 @@ jobs:
             # Pulls all tags (needed for semantic release to correctly version)
             - name: Fetch git tags
               run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Use Node.js 16
               uses: actions/setup-node@v1
