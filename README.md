@@ -3,6 +3,10 @@
 
 This project contains activities for interacting with the [1Integrate REST API](https://1spatial.com/documentation/1integrate) in a [VertiGIS Studio Workflow](https://www.vertigisstudio.com/products/vertigis-studio-workflow/).
 
+## 1Integrate
+
+1Integrate brings the power of 1Spatial’s patented rules engine to your data, delivering automated validation, cleansing, transformation, and enhancement. It gives you confidence in your data by assessing its quality, ensuring it meets defined specifications and is fit for purpose. Connect, Check and Correct your data, then Repeat those processes when required.
+
 ## Usage
 
 To use the 1Integrate activities in [VertiGIS Studio Workflow Designer](https://apps.vertigisstudio.com/workflow/designer/) you need to register an activity pack and then add the activities to a workflow.
