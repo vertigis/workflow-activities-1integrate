@@ -21,7 +21,7 @@ To use the 1Integrate activities in [VertiGIS Studio Workflow Designer](https://
     - API: `JavaScript`
     - URL: The URL to this activity pack manifest
         - Use https://unpkg.com/@vertigis/workflow-activities-1integrate/activitypack.json for the latest version
-        - Use https://unpkg.com/@vertigis/workflow-activities-1integrate@0.1.0/activitypack.json for a specific version
+        - Use https://unpkg.com/@vertigis/workflow-activities-1integrate@1.0.0/activitypack.json for a specific version
     - Title: Your desired title
     - Tags: Must include `geocortex-workflow-activity-pack`
 1. Reload [VertiGIS Studio Workflow Designer](https://apps.vertigisstudio.com/workflow/designer/)
