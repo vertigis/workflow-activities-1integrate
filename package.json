@@ -4,11 +4,11 @@
     "description": "1Integrate activities for VertiGIS Studio Workflow",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/geocortex/workflow-activities-1integrate.git"
+        "url": "git+https://github.com/vertigis/workflow-activities-1integrate.git"
     },
     "license": "MIT",
     "author": "VertiGIS",
-    "homepage": "https://github.com/geocortex/workflow-activities-1integrate#readme",
+    "homepage": "https://github.com/vertigis/workflow-activities-1integrate#readme",
     "keywords": [
         "VertiGIS",
         "VertiGIS Studio",
