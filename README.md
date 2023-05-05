@@ -1,5 +1,5 @@
-[![CI/CD](https://github.com/geocortex/workflow-activities-1integrate/workflows/CI/CD/badge.svg)](https://github.com/geocortex/workflow-activities-1integrate/actions)
-[![npm](https://img.shields.io/npm/v/@geocortex/workflow-activities-1integrate)](https://www.npmjs.com/package/@geocortex/workflow-activities-1integrate)
+[![CI/CD](https://github.com/vertigis/workflow-activities-1integrate/workflows/CI/CD/badge.svg)](https://github.com/vertigis/workflow-activities-1integrate/actions)
+[![npm](https://img.shields.io/npm/v/@vertigis/workflow-activities-1integrate)](https://www.npmjs.com/package/@vertigis/workflow-activities-1integrate)
 
 This project contains activities for interacting with the [1Integrate REST API](https://1spatial.com/documentation/1integrate) in a [VertiGIS Studio Workflow](https://www.vertigisstudio.com/products/vertigis-studio-workflow/).
 
@@ -21,7 +21,7 @@ To use the 1Integrate activities in [VertiGIS Studio Workflow Designer](https://
     - API: `JavaScript`
     - URL: The URL to this activity pack manifest
         - Use https://unpkg.com/@vertigis/workflow-activities-1integrate/activitypack.json for the latest version
-        - Use https://unpkg.com/@vertigis/workflow-activities-1integrate@0.1.0/activitypack.json for a specific version
+        - Use https://unpkg.com/@vertigis/workflow-activities-1integrate@1.0.0/activitypack.json for a specific version
     - Title: Your desired title
     - Tags: Must include `geocortex-workflow-activity-pack`
 1. Reload [VertiGIS Studio Workflow Designer](https://apps.vertigisstudio.com/workflow/designer/)
@@ -46,7 +46,7 @@ To use the 1Integrate activities in [VertiGIS Studio Workflow Designer](https://
 
 ## Development
 
-This project was bootstrapped with the [VertiGIS Studio Workflow SDK](https://github.com/geocortex/vertigis-workflow-sdk). Before you can use your activity pack in the [VertiGIS Studio Workflow Designer](https://apps.vertigisstudio.com/workflow/designer/), you will need to [register the activity pack](https://developers.vertigisstudio.com/docs/workflow/sdk-web-overview#register-the-activity-pack).
+This project was bootstrapped with the [VertiGIS Studio Workflow SDK](https://github.com/vertigis/vertigis-workflow-sdk). Before you can use your activity pack in the [VertiGIS Studio Workflow Designer](https://apps.vertigisstudio.com/workflow/designer/), you will need to [register the activity pack](https://developers.vertigisstudio.com/docs/workflow/sdk-web-overview#register-the-activity-pack).
 
 ## Available Scripts
 
