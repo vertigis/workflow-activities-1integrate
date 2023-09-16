@@ -23,7 +23,7 @@ export interface GetActionMapsOutputs {
  * @category 1Spatial - 1Integrate
  * @description Returns a list of action map resources in the Action Maps folder.
  * @clientOnly
- * @unsupportedApps GMV
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export class GetActionMaps implements IActivityHandler {
     async execute(inputs: GetActionMapsInputs): Promise<GetActionMapsOutputs> {

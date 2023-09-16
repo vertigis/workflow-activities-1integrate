@@ -23,7 +23,7 @@ export interface GetSessionsOutputs {
  * @category 1Spatial - 1Integrate
  * @description Returns the activity log entries for a given locate.
  * @clientOnly
- * @unsupportedApps GMV
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export class GetSessions implements IActivityHandler {
     async execute(inputs: GetSessionsInputs): Promise<GetSessionsOutputs> {

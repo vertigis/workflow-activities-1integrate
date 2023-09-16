@@ -37,7 +37,7 @@ export interface QuerySessionOutputs {
  * @category 1Spatial - 1Integrate
  * @description Returns the activity log entries for a given locate.
  * @clientOnly
- * @unsupportedApps GMV
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export class QuerySession implements IActivityHandler {
     async execute(inputs: QuerySessionInputs): Promise<QuerySessionOutputs> {
