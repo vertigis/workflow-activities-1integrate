@@ -23,7 +23,7 @@ export interface GetDatastoresOutputs {
  * @category 1Spatial - 1Integrate
  * @description Returns a list of datastore resources in the Datastores folder.
  * @clientOnly
- * @unsupportedApps GMV
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export class GetDatastores implements IActivityHandler {
     async execute(inputs: GetDatastoresInputs): Promise<GetDatastoresOutputs> {

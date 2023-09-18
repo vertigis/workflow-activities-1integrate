@@ -35,7 +35,7 @@ export interface GetResourceOutputs {
  * @category 1Spatial - 1Integrate
  * @description Returns a 1Integrate resource given its folder and the path under.
  * @clientOnly
- * @unsupportedApps GMV
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export class GetResource implements IActivityHandler {
     async execute(inputs: GetResourceInputs): Promise<GetResourceOutputs> {

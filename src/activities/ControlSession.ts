@@ -35,7 +35,7 @@ export interface ControlSessionOutputs {
  * @category 1Spatial - 1Integrate
  * @description Executes actions against a given session.
  * @clientOnly
- * @unsupportedApps GMV
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export class ControlSession implements IActivityHandler {
     async execute(

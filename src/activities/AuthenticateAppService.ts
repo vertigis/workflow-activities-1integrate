@@ -42,7 +42,7 @@ export interface AuthenticateAppServiceOutputs {
  * @category 1Spatial - 1Integrate
  * @description Authenticates an application with the 1Integrate REST API.
  * @clientOnly
- * @unsupportedApps GMV
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export class AuthenticateAppService implements IActivityHandler {
     async execute(
