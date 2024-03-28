@@ -14,15 +14,17 @@ function mockResponseOnce(
     callback?: (input: RequestInfo, init: RequestInit) => void
 ) {
     global.fetch = mockFetch;
-    mockFetch.mockImplementationOnce((input, init) => {
-        callback?.(input, init);
-        return Promise.resolve({
-            ok: true,
-            json: () => Promise.resolve(response),
-            status: 200,
-            statusText: "OK",
-        });
-    });
+    mockFetch.mockImplementationOnce(
+        (input: RequestInfo, init: RequestInit) => {
+            callback?.(input, init);
+            return Promise.resolve({
+                ok: true,
+                json: () => Promise.resolve(response),
+                status: 200,
+                statusText: "OK",
+            });
+        }
+    );
 }
 
 const mockService: ApiService = {

@@ -1,4 +1,4 @@
-import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
+import type { IActivityHandler } from "@vertigis/workflow/IActivityHandler";
 import { ApiService } from "../ApiService";
 import { post } from "../request";
 /** An interface that defines the inputs of the activity. */

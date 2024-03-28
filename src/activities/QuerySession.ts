@@ -1,4 +1,4 @@
-import type { IActivityHandler } from "@geocortex/workflow/runtime/IActivityHandler";
+import type { IActivityHandler } from "@vertigis/workflow/IActivityHandler";
 import { ApiService } from "../ApiService";
 import { get } from "../request";
 
@@ -41,25 +41,15 @@ export interface QuerySessionOutputs {
  */
 export class QuerySession implements IActivityHandler {
     async execute(inputs: QuerySessionInputs): Promise<QuerySessionOutputs> {
-        if (!inputs.service) {
+        const { path, service, ...other } = inputs;
+        if (!service) {
             throw new Error("service is required");
         }
-        if (!inputs.path) {
+        if (!path) {
             throw new Error("path is required");
         }
 
-        let params = JSON.parse(JSON.stringify(inputs));
-        delete params["service"];
-        delete params["path"];
-        if (Object.keys(params).length === 0) {
-            params = undefined;
-        }
-
-        const response = await get(
-            inputs.service,
-            `results/${inputs.path}`,
-            params
-        );
+        const response = await get(service, `results/${path}`, other);
         return {
             result: response,
         };
