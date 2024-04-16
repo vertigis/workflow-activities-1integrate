@@ -34,6 +34,7 @@ export async function buildTree(
         ) {
             folders[i]["isEmpty"] = false;
             folders[i]["contents"] = f.contents;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             void buildTree(service, fPath, folders[i]);
         } else {
             folders[i]["isEmpty"] = true;
