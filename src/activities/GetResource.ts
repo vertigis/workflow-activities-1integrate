@@ -21,6 +21,10 @@ export interface GetResourceInputs {
      * @required
      */
     path: string;
+
+    parameters?: Record<string, string | number | boolean | null | undefined>;
+
+    expect?: "json" | "blob";
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -48,10 +52,16 @@ export class GetResource implements IActivityHandler {
         if (!inputs.path) {
             throw new Error("path is required");
         }
-
+        const expect = inputs.expect ? inputs.expect : "json";
+        const queryString: Record<string, any> = {};
+        if (inputs.parameters != undefined) {
+            Object.assign(queryString, inputs.parameters);
+        }
         const response = await get(
             inputs.service,
-            `${inputs.folder}/${inputs.path}`
+            `${inputs.folder}/${inputs.path}`,
+            queryString,
+            expect
         );
 
         return {

@@ -51,7 +51,7 @@ export class ControlSession implements IActivityHandler {
         if (!inputs.action) {
             throw new Error("action is required");
         }
-        const queryString = { action: inputs.action };
+        const queryString: Record<string, any> = { action: inputs.action };
         if (inputs.taskIndex != undefined) {
             queryString["taskIndex"] = inputs.taskIndex;
         }

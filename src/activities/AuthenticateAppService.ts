@@ -12,22 +12,21 @@ export interface AuthenticateAppServiceInputs {
     /**
      * @displayName Access Token URL
      * @description The URL of the 1Integrate Token Service.
-     * @required
      */
-    accessTokenURL: string;
-    /**
-     * @required
-     */
-    username: string;
-    /**
-     * @required
-     */
-    password: string;
+    accessTokenURL?: string;
+
+    username?: string;
+
+    password?: string;
     /**
      * @description Set to true if you require a 2-week token.
      * @required
      */
     longLivedToken: boolean;
+    /**
+     * @description Optional API key to be used for authentication.
+     */
+    apiKey?: string;
 }
 
 /** An interface that defines the outputs of the activity. */
@@ -51,43 +50,65 @@ export class AuthenticateAppService implements IActivityHandler {
         if (!inputs.baseUrl) {
             throw new Error("baseUrl is required");
         }
-        if (!inputs.accessTokenURL) {
-            throw new Error("accessTokenURL is required");
-        }
-        if (!inputs.username) {
-            throw new Error("username is required");
-        }
-        if (!inputs.password) {
-            throw new Error("password is required");
-        }
-        const data = { username: inputs.username, password: inputs.password };
 
-        return fetch(inputs.accessTokenURL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => {
-                const header = response.headers.get("Authorization");
-                const timestamp = new Date();
-                if (inputs.longLivedToken) {
-                    timestamp.setDate(timestamp.getDate() + 14);
-                } else {
-                    timestamp.setHours(timestamp.getHours() + 2);
-                }
-                return {
-                    service: {
-                        url: inputs.baseUrl,
-                        access_token: header,
-                        expires_in: timestamp.toISOString(),
-                        token_type: "Bearer",
-                    },
-                } as any;
+        const timestamp = new Date();
+
+        if (
+            inputs.accessTokenURL != undefined &&
+            inputs.accessTokenURL != null &&
+            inputs.accessTokenURL != "" &&
+            inputs.username != undefined &&
+            inputs.username != null &&
+            inputs.username != "" &&
+            inputs.password != undefined &&
+            inputs.password != null &&
+            inputs.password != ""
+        ) {
+            const data = {
+                username: inputs.username,
+                password: inputs.password,
+            };
+            return fetch(inputs.accessTokenURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
             })
-            .catch((reason) => {
-                return { reason: reason };
-            });
+                .then((response) => {
+                    const header = response.headers.get("Authorization");
+                    if (inputs.longLivedToken) {
+                        timestamp.setDate(timestamp.getDate() + 14);
+                    } else {
+                        timestamp.setHours(timestamp.getHours() + 2);
+                    }
+                    return {
+                        service: {
+                            url: inputs.baseUrl,
+                            access_token: header,
+                            expires_in: timestamp.toISOString(),
+                            token_type: "Bearer",
+                        },
+                    } as any;
+                })
+                .catch((reason) => {
+                    return { reason: reason };
+                });
+        } else if (
+            inputs.apiKey != undefined &&
+            inputs.apiKey != null &&
+            inputs.apiKey != ""
+        ) {
+            return {
+                service: {
+                    url: inputs.baseUrl,
+                    expires_in: timestamp.toISOString(),
+                    token_type: "apiKey",
+                    api_key: inputs.apiKey,
+                },
+            } as any;
+        } else {
+            throw new Error("Either accessTokenURL or apiKey must be provided");
+        }
     }
 }

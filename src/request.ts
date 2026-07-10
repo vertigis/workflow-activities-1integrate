@@ -11,11 +11,18 @@ export async function get<T = any>(
     }
     const qs = objectToQueryString(params);
     const url = `${service.url}/rest/${path}${qs ? "?" + qs : ""}`;
-    const authHeader = `Bearer ${service.access_token}`;
+    const authHeader = service.access_token
+        ? `Bearer ${service.access_token}`
+        : "";
+    const apiKeyHeader = service.api_key ? `${service.api_key}` : "";
+    const headers: Record<string, string> = {};
+    if (authHeader) {
+        headers["Authorization"] = authHeader;
+    } else if (apiKeyHeader) {
+        headers["x-api-key"] = apiKeyHeader;
+    }
     const request = await fetch(url, {
-        headers: {
-            Authorization: authHeader,
-        },
+        headers: headers,
     });
 
     switch (expect) {
@@ -40,14 +47,19 @@ export async function post<T = any>(
     const data = inData != undefined ? inData : {};
 
     const url = `${service.url}/rest/${path}${qs ? "?" + qs : ""}`;
-    const authHeader = `Bearer ${service.access_token}`;
-
+    const authHeader = service.access_token
+        ? `Bearer ${service.access_token}`
+        : "";
+    const apiKeyHeader = service.api_key ? `${service.api_key}` : "";
+    const headers: Record<string, string> = {};
+    if (authHeader) {
+        headers["Authorization"] = authHeader;
+    } else if (apiKeyHeader) {
+        headers["x-api-key"] = apiKeyHeader;
+    }
     return fetch(url, {
         method: "POST",
-        headers: {
-            Authorization: authHeader,
-            "Content-Type": "application/json",
-        },
+        headers: headers,
         body: JSON.stringify(data),
     }).then((response) => {
         const status = response.status;
@@ -70,13 +82,19 @@ export async function put<T = any>(
     const data = inData != undefined ? inData : {};
 
     const url = `${service.url}/rest/${path}${qs ? "?" + qs : ""}`;
-    const authHeader = `Bearer ${service.access_token}`;
+    const authHeader = service.access_token
+        ? `Bearer ${service.access_token}`
+        : "";
+    const apiKeyHeader = service.api_key ? `${service.api_key}` : "";
+    const headers: Record<string, string> = {};
+    if (authHeader) {
+        headers["Authorization"] = authHeader;
+    } else if (apiKeyHeader) {
+        headers["x-api-key"] = apiKeyHeader;
+    }
     return fetch(url, {
         method: "PUT",
-        headers: {
-            Authorization: authHeader,
-            "Content-Type": "application/json",
-        },
+        headers: headers,
         body: JSON.stringify(data),
     }).then(async (response) => {
         const status = response.status;
@@ -110,13 +128,19 @@ export async function remove<T = any>(
     }
 
     const url = `${service.url}/rest/${path}`;
-    const authHeader = `Bearer ${service.access_token}`;
+    const authHeader = service.access_token
+        ? `Bearer ${service.access_token}`
+        : "";
+    const apiKeyHeader = service.api_key ? `${service.api_key}` : "";
+    const headers: Record<string, string> = {};
+    if (authHeader) {
+        headers["Authorization"] = authHeader;
+    } else if (apiKeyHeader) {
+        headers["x-api-key"] = apiKeyHeader;
+    }
     return fetch(url, {
         method: "DELETE",
-        headers: {
-            Authorization: authHeader,
-            "Content-Type": "application/json",
-        },
+        headers: headers,
     }).then((response) => {
         const status = response.status;
         const statusText = response.statusText;

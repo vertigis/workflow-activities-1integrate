@@ -3,4 +3,5 @@ export interface ApiService {
     access_token: string;
     expires_in: string;
     token_type: string;
+    api_key: string;
 }
